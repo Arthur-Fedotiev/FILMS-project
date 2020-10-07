@@ -34,8 +34,8 @@ const films = [
     description:
       "RISE OF THE LEGEND is a story about Lee Chong Wei, who was born in a poor family. He has the talent of playing badminton and went through a lot of difficulties with the spirit of never giving up, finally he becomes a national player.",
   },
-  /* 
- {
+
+  {
     _id: id(),
     title: "Siji: Driver",
     director: "David Chai",
@@ -46,8 +46,7 @@ const films = [
     description:
       "After a driver rescues a passenger from an abusive boyfriend, he discovers she is a human trafficking victim. But in order to free her, he must give up the thing he loves the most.",
   },
-  */
-  /*
+
   {
     _id: id(),
     title: "Aquaman",
@@ -59,7 +58,6 @@ const films = [
     description:
       "Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land. ",
   },
-  */
 ];
 
 const fetchData = () => {
