@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import {prop, sortWith, ascend, descend} from "ramda";
-import FilmsList from "pages/FilmsPage/components/FilmsList";
+//import FilmsList from "pages/FilmsPage/components/FilmsList";
 import FilmContext from "contexts/FilmContext";
 import {films} from "data";
+import FilmForm from "pages/FilmsPage/components/FilmForm";
 
 class App extends Component {
   componentDidMount() {
@@ -29,7 +30,8 @@ class App extends Component {
     return (
       <FilmContext.Provider value={this.state}>
         <div className="ui container mt-3">
-          <FilmsList films={films} />
+          {/*<FilmsList films={films} />*/}
+          <FilmForm></FilmForm>
         </div>
       </FilmContext.Provider>
     );
