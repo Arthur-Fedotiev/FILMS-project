@@ -71,13 +71,13 @@ class FilmForm extends Component {
     if (Object.keys(errors) === 0) {
       this.setState({data: initialData});
     } else {
-      console.log(this.state.data);
+      this.props.saveFilm(this.state.data);
     }
   };
 
   render() {
     const {data, error} = this.state;
-    const {hideForm} = this.props;
+    const {hideForm, saveFilm} = this.props;
     return (
       <form onSubmit={this.handleSubmit} className="ui form">
         <div className="ui grid mb-3">
@@ -229,6 +229,7 @@ class FilmForm extends Component {
 
 FilmForm.propTypes = {
   hideForm: PropTypes.func.isRequired,
+  saveFilm: PropTypes.func.isRequired,
 };
 
 export default FilmForm;
