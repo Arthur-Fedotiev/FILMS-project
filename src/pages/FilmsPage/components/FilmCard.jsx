@@ -1,10 +1,9 @@
 import React, {memo, useContext} from "react";
 import PropTypes from "prop-types";
 import Featured from "components/Featured";
-import FilmContext from "contexts/FilmContext";
+import FilmCardButtons from "pages/FilmsPage/components/FilmCardButtons";
 
 const FilmCard = ({film}) => {
-  const {selectedFilmForEdit} = useContext(FilmContext);
   return (
     <div className="ui card">
       <Featured featured={film.featured} id={film._id} />
@@ -22,19 +21,7 @@ const FilmCard = ({film}) => {
           </span>
         </div>
       </div>
-      <div className="extra content">
-        <div className="ui two buttons">
-          <span
-            onClick={e => selectedFilmForEdit(film)}
-            className="ui green basic button"
-          >
-            <i className="ui icon edit"></i>
-          </span>
-          <span className="ui red basic button">
-            <i className="ui icon trash"></i>
-          </span>
-        </div>
-      </div>
+      <FilmCardButtons film={film} />
     </div>
   );
 };
