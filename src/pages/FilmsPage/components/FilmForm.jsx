@@ -4,6 +4,7 @@ import FormMessage from "components/FormMessage";
 import PropTypes from "prop-types";
 
 const initialData = {
+  _id: null,
   title: "",
   img: "",
   description: "",
@@ -20,6 +21,22 @@ class FilmForm extends Component {
   };
 
   photoRef = createRef();
+
+  componentDidMount() {
+    if (this.props.film._id) {
+      this.setState({data: this.props.film});
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.film._id && this.props.film._id !== prevProps.film._id) {
+      this.setState({data: this.props.film});
+    } else {
+      if (!this.props.film._id && prevProps.film._id) {
+        this.setState({data: initialData});
+      }
+    }
+  }
 
   updatePhoto = e => {
     const file = this.photoRef.current.files && this.photoRef.current.files[0];
@@ -67,17 +84,17 @@ class FilmForm extends Component {
     e.preventDefault();
     const errors = this.validate(this.state.data);
     this.setState({error: errors});
-    // console.log(this.state.error);
-    if (Object.keys(errors) === 0) {
-      this.setState({data: initialData});
-    } else {
+    if (Object.keys(errors).length === 0) {
+      console.log(errors);
       this.props.saveFilm(this.state.data);
+      this.setState({data: initialData});
     }
+    console.log(errors);
   };
 
   render() {
     const {data, error} = this.state;
-    const {hideForm, saveFilm} = this.props;
+    const {hideForm, film} = this.props;
     return (
       <form onSubmit={this.handleSubmit} className="ui form">
         <div className="ui grid mb-3">
@@ -230,6 +247,7 @@ class FilmForm extends Component {
 FilmForm.propTypes = {
   hideForm: PropTypes.func.isRequired,
   saveFilm: PropTypes.func.isRequired,
+  film: PropTypes.object.isRequired,
 };
 
 export default FilmForm;
