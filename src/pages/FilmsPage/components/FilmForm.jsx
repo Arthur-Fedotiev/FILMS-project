@@ -1,6 +1,7 @@
 import React, {Component, createRef} from "react";
 import ImageLoader from "components/ImageLoader";
 import FormMessage from "components/FormMessage";
+import PropTypes from "prop-types";
 
 const initialData = {
   title: "",
@@ -76,6 +77,7 @@ class FilmForm extends Component {
 
   render() {
     const {data, error} = this.state;
+    const {hideForm} = this.props;
     return (
       <form onSubmit={this.handleSubmit} className="ui form">
         <div className="ui grid mb-3">
@@ -216,10 +218,17 @@ class FilmForm extends Component {
             Save
           </button>
           <div className="or"></div>
-          <span className="ui button">Hide form</span>
+          <span onClick={hideForm} className="ui button">
+            Hide form
+          </span>
         </div>
       </form>
     );
   }
 }
+
+FilmForm.propTypes = {
+  hideForm: PropTypes.func.isRequired,
+};
+
 export default FilmForm;
