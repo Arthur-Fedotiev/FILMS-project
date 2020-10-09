@@ -6,6 +6,7 @@ import FilmForm from "pages/FilmsPage/components/FilmForm";
 import FilmContext from "contexts/FilmContext";
 import {films} from "data";
 import TopNavigation from "components/TopNavigation";
+import LoginForm from "components/LoginForm";
 
 class App extends Component {
   componentDidMount() {
@@ -65,7 +66,8 @@ class App extends Component {
       <FilmContext.Provider value={this.state}>
         <div className="ui container mt-3">
           <TopNavigation showForm={this.showForm} />
-          <div className="ui stackable grid">
+          <LoginForm />
+          {/*  <div className="ui stackable grid">
             {showAddForm && (
               <div className="six wide column">
                 <FilmForm
@@ -79,6 +81,7 @@ class App extends Component {
               <FilmsList films={films} />
             </div>
           </div>
+       */}
         </div>
       </FilmContext.Provider>
     );
